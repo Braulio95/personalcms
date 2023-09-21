@@ -6,7 +6,7 @@ const app = express();
 
 //Data base config
 mongoose
-  .connect("mongodb://localhost:27017/cms_braulio", {
+  .connect("mongodb://127.0.0.1:27017/cmd_braulio", {
     useNewUrlParser: true,
   })
   .then((response) => {
@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname, "public")));
 /*Express config ended*/
 
 /*Main*/
-app.use("/", (request, response) => {
+app.use("/", (_request, response) => {
   response.send("Welcome to the app");
 });
 /*Main end*/
