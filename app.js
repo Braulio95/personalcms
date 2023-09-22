@@ -2,22 +2,21 @@ const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
 const { engine } = require("express-handlebars");
+const { mongoDbURL, PORT } = require("./config/config");
 
 const app = express();
 
 //Data base config
 mongoose
-  .connect("mongodb://127.0.0.1:27017/cmd_braulio", {
+  .connect(mongoDbURL, {
     useNewUrlParser: true,
   })
-  .then((response) => {
+  .then((_response) => {
     console.log("Connected");
   })
-  .catch((error) => {
+  .catch((_error) => {
     console.log("Something happened try again :(");
   });
-
-const PORT = 3000;
 
 /*Express config*/
 app.use(express.json());
