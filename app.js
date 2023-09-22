@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
+const { engine } = require("express-handlebars");
 
 const app = express();
 
@@ -24,9 +25,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 /*Express config ended*/
 
+//Setup view engine to use handlebars
+app.engine("handlebars", engine({ defaultLayout: "default" }));
+app.set("view engine", "handlebars");
+
 /*Main*/
 app.use("/", (_request, response) => {
-  response.send("Welcome to the app");
+  response.render("default/index");
 });
 /*Main end*/
 
