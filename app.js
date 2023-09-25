@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const path = require("path");
 const { engine } = require("express-handlebars");
 const { mongoDbURL, PORT } = require("./config/config");
+const defaultRoutes = require("./routes/default/defaultRoutes");
 
 const app = express();
 
@@ -11,7 +12,8 @@ mongoose
   .connect(mongoDbURL, {
     useNewUrlParser: true,
   })
-  .then((_response) => {
+  .then((response) => {
+    //console.log(response);
     console.log("Connected");
   })
   .catch((_error) => {
@@ -29,9 +31,7 @@ app.engine("handlebars", engine({ defaultLayout: "default" }));
 app.set("view engine", "handlebars");
 
 /*Main*/
-app.use("/", (_request, response) => {
-  response.render("default/index");
-});
+app.use("/", defaultRoutes);
 /*Main end*/
 
 app.listen(PORT, () => {
