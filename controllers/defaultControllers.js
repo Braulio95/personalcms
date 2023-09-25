@@ -1,5 +1,5 @@
-modules.exports = {
-  index: (request, response) => {
+module.exports = {
+  index: (_request, response) => {
     response.render("default/index");
   },
 };
