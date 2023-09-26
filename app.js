@@ -4,6 +4,7 @@ const path = require("path");
 const { engine } = require("express-handlebars");
 const { mongoDbURL, PORT } = require("./config/config");
 const defaultRoutes = require("./routes/default/defaultRoutes");
+const adminRoutes = require("./routes/admin/adminRoutes");
 
 const app = express();
 
@@ -32,6 +33,7 @@ app.set("view engine", "handlebars");
 
 /*Main*/
 app.use("/", defaultRoutes);
+app.use("/admin", adminRoutes);
 /*Main end*/
 
 app.listen(PORT, () => {
