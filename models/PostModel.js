@@ -21,6 +21,10 @@ const PostSchema = new Schema({
     type: Date,
     default: Date.now(),
   },
+  allowComments: {
+    type: Boolean,
+    default: false,
+  },
 });
 
-module.exports = mongoose.model("post", PostSchema);
+module.exports = { Post: mongoose.model("post", PostSchema) };

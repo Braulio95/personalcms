@@ -1,22 +1,27 @@
-{{> admin/admin-header }}
+<div class="container">
+  <div class="alert alert-secondary text-center">
+    <h1>ALL POSTS</h1>
+  </div>
 
-<body class="fixed-nav sticky-footer bg-dark" id="page-top">
-<!-- Navigation-->
-{{> admin/admin-topnav}}
+  <table class="table table-bordered">
+    <thead class="bg-dark text-center">
+      <tr class="text-white">
+        <th>Title</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Comments Allowed</th>
+      </tr>
+    </thead>
+    <tbody class="text-center">
+      {{#each posts}}
+        <tr>
+          <td>{{title}}</td>
+          <td>{{description}}</td>
+          <td>{{status}}</td>
+          <td>{{allowComments}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
 
-
-
-<div class="content-wrapper">
-   
-    {{{body}}}
-    <!-- /.container-fluid-->
-    <!-- /.content-wrapper-->
-    
-    
-    
-    
-{{> admin/admin-footer}}    
 </div>
-</body>
-
-</html>

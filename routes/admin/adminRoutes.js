@@ -15,8 +15,8 @@ router.all("/*", (request, _response, next) => {
 
 router.route("/").get(index);
 
-router.route("/posts").get(getPosts).post(sumbitPosts);
+router.route("/posts").get(getPosts);
 
-router.route("/posts/create").get(createPosts);
+router.route("/posts/create").get(createPosts).post(sumbitPosts);
 
 module.exports = router;
