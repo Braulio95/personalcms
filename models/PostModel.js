@@ -25,6 +25,20 @@ const PostSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: "user",
+  },
+  category: {
+    type: Schema.Types.ObjectId,
+    ref: "category",
+  },
+  comments: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "comment",
+    },
+  ],
 });
 
 module.exports = { Post: mongoose.model("post", PostSchema) };
