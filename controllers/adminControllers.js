@@ -14,10 +14,13 @@ module.exports = {
   },
   sumbitPosts: (request, response) => {
     //ToDo: Form validation is pending
+
+    const commentsAllowed = request.body.allowComments ? true : false;
     const newPost = new Post({
       title: request.body.title,
       description: request.body.description,
       status: request.body.status,
+      allowComments: commentsAllowed,
     });
 
     newPost.save().then((post) => {
@@ -28,5 +31,14 @@ module.exports = {
   },
   createPosts: (_request, response) => {
     response.render("admin/posts/create");
+  },
+  editPosts: (request, response) => {
+    const id = request.params.id;
+    console.log(id);
+    Post.findById(id)
+      .lean()
+      .then((post) => {
+        response.render("admin/posts/edit", { post: post });
+      });
   },
 };
