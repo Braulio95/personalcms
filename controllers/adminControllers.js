@@ -10,6 +10,6 @@ module.exports = {
     response.send("Post submitted");
   },
   createPosts: (_request, response) => {
-    response.send("Post created");
+    response.render("admin/posts/create");
   },
 };
