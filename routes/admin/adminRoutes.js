@@ -1,6 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const { index } = require("../../controllers/adminControllers");
+const {
+  index,
+  getPosts,
+  sumbitPosts,
+  createPosts,
+} = require("../../controllers/adminControllers");
 
 router.all("/*", (request, _response, next) => {
   request.app.locals.layout = "admin";
@@ -9,5 +14,9 @@ router.all("/*", (request, _response, next) => {
 });
 
 router.route("/").get(index);
+
+router.route("/posts").get(getPosts).post(sumbitPosts);
+
+router.route("/posts/create").get(createPosts);
 
 module.exports = router;
